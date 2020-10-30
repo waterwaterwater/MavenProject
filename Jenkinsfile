@@ -19,6 +19,7 @@ pipeline {
          parallel{
            stage ('Deploy to Staging'){
              steps {
+               //build job: 'deploy_to_staging'
                sh "cp **/target/*.war /home/student/Downloads/tomcat-staging/webapps/"
              }
            }
@@ -27,6 +28,7 @@ pipeline {
                timeout (time:5, unit:'DAYS'){
                 input message: "Approve Prod Deployment?"
                }
+               //build job: 'deploy_to_prod'
                sh "cp **/target/*.war /home/student/Downloads/tomcat-prod/webapps/"
              }     
            }

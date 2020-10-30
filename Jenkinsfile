@@ -25,9 +25,9 @@ pipeline {
            }
            stage ('Deploy to prod') {
              steps {
-               timeout (time:5, unit:'DAYS'){
-                input message: "Approve Prod Deployment?"
-               }
+               //timeout (time:5, unit:'DAYS'){
+                //input message: "Approve Prod Deployment?"
+               //}
                //build job: 'deploy_to_prod'
                sh "cp **/target/*.war /home/student/Downloads/tomcat-prod/webapps/"
              }     

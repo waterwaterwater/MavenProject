@@ -8,11 +8,12 @@ pipeline {
             input {
                 message "are you hungy?"
                 ok "Yes, I am"
-                submitrer "lex,john"
+                submitre "lex,john"
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Jenkins',
                            description: 'Description about qesstion')
                 }
+            }
             steps {
                 echo "Hello, ${PERSON}"
                 

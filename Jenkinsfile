@@ -1,21 +1,20 @@
 pipeline {
     agent any
+
     stages {
-        stage('Example Build') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building..'
             }
         }
-        stage('Example Deploy') {
-            when {
-                expression { BRANCH_NAME ==~ /(production|staging)/ }
-                anyOf {
-                    environment name: 'DEPLOY_TO', value: 'production'
-                    environment name: 'DEPLOY_TO', value: 'staging'
-                }
-            }
+        stage('Test') {
             steps {
-                echo 'Deploying'
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }

@@ -1,17 +1,10 @@
 pipeline {
-  agent any
-  stages{
-       stage ('Build'){
-        steps {
-          build job: 'package'
+    agent any 
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!' 
+            }
         }
-        post {
-           success {
-             echo 'Archiving...'
-             archiveArtifacts artifacts:'**/*.war'
-           }
-         }
-       }
-
-      }
+    }
 }

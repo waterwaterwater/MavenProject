@@ -14,7 +14,7 @@ pipeline {
                            description: 'Description about qesstion')
                 }
             steps {
-                echo "Hello, ${PERSON}}"
+                echo "Hello, ${PERSON}"
                 
             }
         }

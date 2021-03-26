@@ -1,34 +1,21 @@
 pipeline {
     agent any
-    tools {
-        maven 'localmvn'
-    }
     stages {
-        stage('Build') {
-            input {
-                message "are you hungy?"
-                ok "Yes, I am"
-                submitter "lex,john"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Jenkins',
-                           description: 'Description about qesstion')
+        stage('Example Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+                anyOf {
+                    environment name: 'DEPLOY_TO', value: 'production'
+                    environment name: 'DEPLOY_TO', value: 'staging'
                 }
             }
             steps {
-                echo "Hello, ${PERSON}"
-                
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                build job: 'checkstyle'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo 'Deploying'
             }
         }
     }
-}

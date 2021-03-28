@@ -13,6 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                build job: 'checkstyle'
             }
         }
         stage('Deploy') {
